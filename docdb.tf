@@ -8,7 +8,7 @@ resource "aws_docdb_cluster" "docdb" {
   skip_final_snapshot     = true
 }
 
-resource "aws_docdb_subnet_group" "default" {
+resource "aws_docdb_subnet_group" "docdb" {
   name       = "robosho-${var.ENV}-subent-grp"
   subnet_ids = data.terraform_remote_state.vpc.output.PRIVATE_SUBNET_ID
 
