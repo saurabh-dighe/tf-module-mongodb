@@ -5,6 +5,7 @@ resource "aws_docdb_cluster" "docdb" {
   master_password         = "RoboShop1"
   # backup_retention_period = 5                 Enable in prod
   # preferred_backup_window = "07:00-09:00"
+  db_subnet_group_name    = aws_docdb_subnet_group.docdb.name 
   skip_final_snapshot     = true
 }
 
