@@ -9,10 +9,10 @@ resource "aws_docdb_cluster" "docdb" {
 }
 
 resource "aws_docdb_subnet_group" "default" {
-  name       = "main"
+  name       = "robosho-${var.ENV}-subent-grp"
   subnet_ids = data.terraform_remote_state.network.PRIVATE_SUBNET_ID
 
   tags = {
-    Name = "My docdb subnet group"
+    Name = "robosho-${var.ENV}-subent-grp"
   }
 }
