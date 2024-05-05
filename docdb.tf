@@ -8,11 +8,11 @@ resource "aws_docdb_cluster" "docdb" {
   skip_final_snapshot     = true
 }
 
-resource "aws_docdb_subnet_group" "docdb" {
-  name       = "roboshop-${var.ENV}-docdb"
-  subnet_ids = data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNET_ID
+# resource "aws_docdb_subnet_group" "docdb" {
+#   name       = "roboshop-${var.ENV}-docdb"
+#   subnet_ids = data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNET_ID
 
-  tags = {
-    Name = "roboshop-${var.ENV}-subent-grp"
-  }
-}
+#   tags = {
+#     Name = "roboshop-${var.ENV}-subent-grp"
+#   }
+# }
