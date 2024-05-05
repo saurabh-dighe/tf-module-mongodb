@@ -10,7 +10,7 @@ resource "aws_docdb_cluster" "docdb" {
 
 resource "aws_docdb_subnet_group" "default" {
   name       = "robosho-${var.ENV}-subent-grp"
-  subnet_ids = data.terraform_remote_state.network.PRIVATE_SUBNET_ID
+  subnet_ids = data.terraform_remote_state.vpc.output.PRIVATE_SUBNET_ID
 
   tags = {
     Name = "robosho-${var.ENV}-subent-grp"

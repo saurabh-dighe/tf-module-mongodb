@@ -1,4 +1,4 @@
-data "terraform_remote_state" "network" {
+data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
     bucket = "terraform-statefile-saurabh"
