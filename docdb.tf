@@ -16,3 +16,13 @@ resource "aws_docdb_subnet_group" "docdb" {
     Name = "roboshop-${var.ENV}-subent-grp"
   }
 }
+
+resource "aws_docdb_cluster_instance" "cluster_instances" {
+  count              = 2
+  identifier         = "docdb-cluster-demo-${count.index}"
+  cluster_identifier = aws_docdb_cluster.docdb.id
+  instance_class     = "db.r5.micro"
+    tags = {
+    Name = "roboshop-${var.ENV}-cluster_instance-${count.index}"
+  }
+}
