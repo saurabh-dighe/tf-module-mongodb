@@ -7,3 +7,12 @@ resource "aws_docdb_cluster" "docdb" {
   # preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true
 }
+
+resource "aws_docdb_subnet_group" "default" {
+  name       = "main"
+  subnet_ids = data.terraform_remote_state.network.PRIVATE_SUBNET_ID
+
+  tags = {
+    Name = "My docdb subnet group"
+  }
+}
