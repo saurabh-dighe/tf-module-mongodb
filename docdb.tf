@@ -7,7 +7,7 @@ resource "aws_docdb_cluster" "docdb" {
   # preferred_backup_window = "07:00-09:00"
   db_subnet_group_name    = aws_docdb_subnet_group.docdb.name 
   skip_final_snapshot     = true
-  vpc_security_group_ids  = [aws_security_group.allow_docdb.id]
+  # vpc_security_group_ids  = [aws_security_group.allow_docdb.id]
 }
 
 resource "aws_docdb_subnet_group" "docdb" {
