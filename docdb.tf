@@ -27,3 +27,26 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
     Name = "roboshop-${var.ENV}-cluster_instance-${count.index}"
   }
 }
+
+resource "aws_security_group" "allow_tls" {
+  name        = "roboshop-${var.ENV}-mongodb-sg"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
+
+  ingress {
+    from_port        = 27017
+    to_port          = 27017
+    protocol         = "tcp"
+    cidr_blocks      = data.terraform_remote_state.vpc.outputs.VPC_CIDR
+  }
+  ingress {
+    from_port        = 27017
+    to_port          = 27017
+    protocol         = "tcp"
+    cidr_blocks      = data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR
+  }
+  
+  tags = {
+    Name = "alloroboshop-${var.ENV}-mongodb-sg"
+  }
+}
