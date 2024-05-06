@@ -47,6 +47,6 @@ resource "aws_security_group" "allow_docdb" {
   }
   
   tags = {
-    Name = "alloroboshop-${var.ENV}-mongodb-sg"
+    Name = "roboshop-${var.ENV}-mongodb-sg"
   }
 }
