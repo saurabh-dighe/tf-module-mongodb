@@ -1,8 +1,8 @@
 resource "aws_docdb_cluster" "docdb" {
   cluster_identifier      = "roboshop-${var.ENV}-docdb"
   engine                  = var.DOCDB_ENGINE_VERSION
-  master_username         = var.DOCDB_USENAME
-  master_password         = var.DOCDB_PASSWORD
+  master_username         = jsondecode(data.aws_secretsmanager_secret_version.secret_version.secret_string)["RDS_USERNAME"]
+  master_password         = jsondecode(data.aws_secretsmanager_secret_version.secret_version.secret_string)["RDS_PASSWORD"]
   # backup_retention_period = 5                 Enable in prod
   # preferred_backup_window = "07:00-09:00"
   db_subnet_group_name    = aws_docdb_subnet_group.docdb.name 
