@@ -20,10 +20,10 @@ resource "aws_docdb_subnet_group" "docdb" {
 }
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
-  count              = 1
+  count              = var.DOCDB_INSTANCE_COUNT
   identifier         = "docdb-cluster-demo-${count.index}"
   cluster_identifier = aws_docdb_cluster.docdb.id
-  instance_class     = "db.t3.medium"
+  instance_class     = var.DOCDB_INSTANCE_TYPE
     tags = {
     Name = "roboshop-${var.ENV}-cluster_instance-${count.index}"
   }
